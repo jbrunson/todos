@@ -1,15 +1,15 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# feature "User marks todo incomplete" do
-#   scenario "successfully" do
-#     sign_in
+feature "User marks todo incomplete" do
+  scenario "successfully" do
+    sign_in
 
-#     create_todo "Buy milk"
+    create_todo "Buy milk"
 
-#     click_on "Mark complete"
-#     click_on "Mark incomplete"
+    click_on "Mark complete", match: :first
+    click_on "Incomplete", match: :prefer_exact
 
-#     expect(page).not_to display_completed_todo "Buy milk"
-#     expect(page).to display_todo "Buy milk"
-#   end
-# end
+    expect(page).not_to have_content "Incomplete"
+    expect(page).to display_todo "Buy milk"
+  end
+end

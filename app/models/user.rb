@@ -1,5 +1,4 @@
 class User 
-
   def initialize email
     @email = email
   end
